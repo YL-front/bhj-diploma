@@ -18,7 +18,12 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
+    this.button = document.querySelector('.sidebar-toggle');
 
+    this.button.addEventListener('click', () => {
+      document.body.classList.toggle('sidebar-collapse');
+      document.body.classList.toggle('sidebar-open');
+    })
   }
 
   /**
@@ -29,6 +34,22 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
+    document.querySelectorAll('#sidebar-menu li a')
+      .forEach(e => {
+        e.addEventListener('click', () => {
 
+          if (e.parentElement.classList.contains('menu-item_login')) {
+            App.getModal('login').open();
+          } else if (e.parentElement.classList.contains('menu-item_register')) {
+            App.getModal('register').open();
+          } else if (e.parentElement.classList.contains('menu-item_logout')) {
+            User.logout((err, response) => {
+              if (response.success) {
+                App.setState('init');
+              }
+            })
+          }
+        })
+      })
   }
 }
