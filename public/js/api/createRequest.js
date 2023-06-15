@@ -3,47 +3,31 @@
  * на сервер.
  * */
 const createRequest = (options = {}) => {
-    const xhr = new XMLHttpRequest();
-    xhr.responseType = options.responseType;
+  const xhr = new XMLHttpRequest();
+  xhr.responseType = options.responseType;
 
-    if (options.method === 'GET') {
-       let params = '';
-       
-        for (let e in options.data) {
-            const key = encodeURIComponent(e);
-            const value = encodeURIComponent(options.data[key]);
-            params += `&${key}=${value}`;
-        }
+  if (options.method === 'GET') {
+    options.url += '?';
 
-        const resultUrl = options.url + '?' + params.slice(1);
+      for (let e in options.data) {
+        const key = encodeURIComponent(e);
+        const value = encodeURIComponent(options.data[key]);
+        
+        options.url += `&${key}=${value}`;
+      }
 
-        xhr.onload = () => {
-            options.callback(null, xhr.response);
-        }
-
-        xhr.onerror = () => {
-            options.callback(xhr.response, null);
-        }
-
-        try {
-            xhr.open(options.method, resultUrl);
-            xhr.send();
-        } catch (error) {
-            alert(error.message);
-        }
-    } else {
+      try {
+        xhr.open(options.method, options.url);
+        xhr.send();
+      } catch (error) {
+        options.callback(error);
+        alert(error.message);
+      }
+  } else {
     const formData = new FormData();
 
     for (let key in options.data) {
       formData.append(key, options.data[key]);
-    }
-
-    xhr.onload = () => {
-      options.callback(null, xhr.response);
-    }
-
-    xhr.onerror = () => {
-      options.callback(xhr.response, null);
     }
 
     try {
@@ -51,6 +35,7 @@ const createRequest = (options = {}) => {
       xhr.send(formData);
     } catch (error) {
       console.log(error);
+      options.callback(error);
       alert(error.message);
     }
   }

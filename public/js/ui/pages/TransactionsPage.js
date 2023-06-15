@@ -197,7 +197,7 @@ class TransactionsPage {
     element.append(elementControls);
     
     return element;
-
+    
   }
 
   /**

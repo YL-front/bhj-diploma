@@ -9,6 +9,7 @@ class CreateTransactionForm extends AsyncForm {
    * */
   constructor(element) {
     super(element)
+    this.renderAccountsList();
   }
 
   /**
@@ -27,11 +28,14 @@ class CreateTransactionForm extends AsyncForm {
           fragment.append(optionsItem);
         })
       }
-      const select = this.element.querySelector('.accounts-select');
+      const select = this.element.querySelector('select#income-accounts-list');
       
       while (select.firstChild) {
         select.removeChild(select.firstChild);
       }
+      // select.querySelectorAll('option').forEach(elem => {
+      //   elem.parentNode.removeChild(elem)
+      // })  
       
       select.prepend(fragment);
     })

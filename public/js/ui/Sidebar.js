@@ -34,7 +34,7 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
-    document.querySelectorAll('#sidebar-menu li a')
+    document.querySelectorAll('.sidebar-menu li a')
       .forEach(e => {
         e.addEventListener('click', () => {
 

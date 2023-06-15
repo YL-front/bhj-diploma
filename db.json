@@ -5,6 +5,12 @@
       "email": "demo@demo",
       "password": "demo",
       "id": "1"
+    },
+    {
+      "name": "fake",
+      "email": "fake@demo.ru",
+      "password": "111111",
+      "id": "1v3o25clija8y8x"
     }
   ],
   "accounts": [
@@ -22,6 +28,11 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "test",
+      "user_id": "1v3o25clija8y8x",
+      "id": "1v3obzslikpvfpg"
     }
   ],
   "transactions": [
@@ -159,6 +170,32 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "1v3o6lslikpv32u",
+      "type": "income",
+      "name": "test",
+      "sum": 10,
+      "user_id": "1v3o25clija8y8x",
+      "created_at": "2023-06-06T20:11:32.309Z"
+    },
+    {
+      "id": "1v3o3scliwtzf57",
+      "type": "income",
+      "name": "fake",
+      "sum": 1,
+      "account_id": "1v3obzslikpvfpg",
+      "user_id": "1v3o25clija8y8x",
+      "created_at": "2023-06-15T07:40:07.146Z"
+    },
+    {
+      "id": "1v3oe04liwtzt4m",
+      "type": "income",
+      "name": "fake 1",
+      "sum": 10,
+      "account_id": "1v3obzslikpvfpg",
+      "user_id": "1v3o25clija8y8x",
+      "created_at": "2023-06-15T07:40:25.269Z"
     }
   ]
 }
